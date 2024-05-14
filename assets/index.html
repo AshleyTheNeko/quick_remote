@@ -1,0 +1,43 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Remote control</title>
+    </head>
+    <body>
+        <script>
+            toggle = (to_toggle) => {
+                var icon = document.getElementById(to_toggle);
+                icon.src = "/toggle/" + to_toggle + "?" + new Date().getTime();
+            };
+
+            setInterval(() => {
+                var mic = document.getElementById("mic");
+                mic.src = "/image/mic?" + new Date().getTime();
+                var music = document.getElementById("music");
+                music.src = "/image/music?" + new Date().getTime();
+            }, 5000);
+        </script>
+        <div id="container">
+            <img id="mic" src="/image/mic" onclick="toggle('mic')" />
+            <img id="music" src="/image/music" onclick="toggle('music')" />
+        </div>
+        <style>
+            #container img {
+                height: 100%;
+            }
+            body {
+                height: 100%;
+                width: 100%;
+            }
+            #container {
+                height: 20vw;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        </style>
+    </body>
+</html>
